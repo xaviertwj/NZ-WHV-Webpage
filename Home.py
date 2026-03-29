@@ -4,6 +4,19 @@ import numpy as np
 import plotly.express as px 
 import os
 from utils.gpx_parser import load_gpx_data
+from streamlit_carousel import carousel
+
+st.components.v1.html("""
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0F2NJJP4NT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0F2NJJP4NT');
+</script>
+""")
 
 st.set_page_config(layout="wide")
 
@@ -45,7 +58,7 @@ col3.caption("Remarkables, Coronet Peak, Cardrona")
 col4, col5, col6 = st.columns(3)
 
 col4.metric("🚶 Distance", "3,401 km")
-col4.caption("Singapore - Taiwan")
+col4.caption("Equivalent to distance from SGP-TWN")
 
 col5.metric("💼 Jobs", "7")
 col5.caption("Horticulture, Hospitality and Construction")
@@ -144,11 +157,11 @@ volunteer_df = pd.DataFrame(volunteer)
 
 col1, col2 = st.columns(2)
 with col1:
-    st.caption("**Jobs**")
+    st.markdown("##### **Jobs**")
     st.dataframe(jobs_df, hide_index=True)
 
 with col2:
-    st.caption("**Volunteering**")
+    st.markdown("##### **Volunteering**")
     st.dataframe(volunteer_df, hide_index=True)
 
 st.markdown(" " \
@@ -227,6 +240,7 @@ title="Hikes: By elevation and distance"
 )
 st.plotly_chart(fig, use_container_width=True)
 
+st.divider()
 
 #new graph testing
 #activities["Date"] = pd.to_datetime(activities["Date"])
@@ -263,17 +277,120 @@ st.plotly_chart(fig, use_container_width=True)
 #fav hikes
 st.markdown("### 👣 My Favourite Hikes")
 
-st.markdown("#### Routeburn Tack to Harris Saddle | 9.5/ 10 | Fiordland National Park | 23.54km")
-st.write("")
+st.markdown("#### [Routeburn Track to Harris Saddle](https://www.alltrails.com/trail/new-zealand/otago/routeburn-track-to-lake-harris-and-harris-saddle-shelter) | 9.5/10 | Fiordland National Park | 23.54km | 7.2 Hours ")
+st.markdown("" \
+"[Routeburn Track](https://www.doc.govt.nz/parks-and-recreation/places-to-go/fiordland/places/fiordland-national-park/things-to-do/tracks/routeburn-track/)" \
+" is one of the coveted Great Walks in NZ - the full track features a 33km point-to-point hike over 2-4 days. " \
+"\n\nMy hike was a *truncated* version since one of the bridge was closed off due to avalanche risk. " \
+"I started from Routeburn Track Car Park and turned back at the point of the bridge closure, just before Harris Saddle." \
+"\n\nI've always heard others say that Routeburn is the 'best' Great Walk and honestly, it comes as no surprise. This was one of my most scenic hikes in New Zealand! " \
+"Snow-capped mountains, vast valleys and occassional waterfalls await you at every corner of this track, I lost track of how many times I stopped along this track just to gaze and the scenary in awe. " \
+"This is a hike that I'll strongly recommend and if you're even more adventurous, go for the full Routeburn Track!")
 
-st.markdown("#### Lake Marian Track | 9.5/ 10 | Fiordland National Park | 6.94km")
-st.write("")
+routeburn_pics = [
+    {"title": "", "text": "", "img":"images/Routeburn/IMG_7180.JPEG",},
+    {"title": "", "text": "", "img":"images/Routeburn/IMG_7181.JPEG",},
+    {"title": "", "text": "", "img":"images/Routeburn/IMG_7183.JPEG",},
+    {"title": "", "text": "", "img":"images/Routeburn/IMG_7195.JPEG",},
+    {"title": "", "text": "", "img":"images/Routeburn/IMG_7199.JPEG",},
+    {"title": "", "text": "", "img":"images/Routeburn/IMG_7211.JPEG",},
+]
 
-st.markdown("#### Tongariro Alpine Crossing | 9/ 10 | Tongariro National Park | 20.54km")
-st.write("")
+with st.container():
+    carousel(items=routeburn_pics)
+st.caption("*If the pictures fail to render fully, open and close the sidebar*")
 
-st.markdown("#### Rob Roy Glacier Tack | 9/ 10 | Mount Aspiring National Park | 23.54km")
-st.write("")
+st.divider()
 
-st.markdown("#### Mount Sunday Track | 9/ 10 | Ashburton Lakes | 2.01km")
-st.write("")
+st.markdown("#### [Lake Marian Track](https://www.alltrails.com/trail/new-zealand/otago/lake-marian-track) | 9.5/10 | Fiordland National Park | 6.94km | 3.5 Hours ")
+st.markdown("" \
+"Fiordland National Park is the biggest national park in New Zealand and home to a plethora of amazing hikes, and Lake Marian is one of them." \
+"\n\nThis unsuspecting trail starts off easy, bringing you through various water features on a comfortable broadwalk. " \
+"Before you know it, you'll be spending the next ~4kms navigating through a forest with uneven terrain, fallen rocks and dense trees." \
+"A decent level of fitness is required to traverse through the forest, power through and you'll be rewarded with a pristine view of Lake Marian against the backdrop of a hanging valley, truly *magical*." \
+"\n\nThis track is also conveniently located on the way to Milford Sound, I would highly recommend setting aside a day to do both Lake Marian and Key Summit (end of Routeburn Track)! ")
+
+marian_pics = [
+    {"title": "", "text": "", "img":"images/Lake Marian/IMG_7028.JPEG",},
+    {"title": "", "text": "", "img":"images/Lake Marian/IMG_7029.JPEG",},
+    {"title": "", "text": "", "img":"images/Lake Marian/IMG_7034.JPEG",},
+    {"title": "", "text": "", "img":"images/Lake Marian/IMG_7037.JPEG",},
+    {"title": "", "text": "", "img":"images/Lake Marian/IMG_7039.JPEG",},
+    {"title": "", "text": "", "img":"images/Lake Marian/IMG_7060.JPEG",},
+    {"title": "", "text": "", "img":"images/Lake Marian/IMG_7067.JPEG",},
+]
+with st.container():
+    carousel(items=marian_pics)
+st.divider()
+
+
+st.markdown("#### [Tongariro Alpine Crossing](https://www.alltrails.com/trail/new-zealand/manawatu-wanganui/tongariro-alpine-crossing) | 9/10 | Tongariro National Park | 20.54km | 6.5 Hours")
+st.markdown("" \
+"Tongariro Alpine Crossing is part of the [Tongariro Northern Circuit](https://www.doc.govt.nz/parks-and-recreation/places-to-go/central-north-island/places/tongariro-national-park/things-to-do/tracks/tongariro-northern-circuit/) - another of NZ's Great Walks." \
+"\n\nThis is the only hike in North Island to have made it to this list and probably one of my most memorable hikes." \
+"When I first started this hike, I felt like I was walking on the moon due to the unique features of the volcanic landscape alongside the lack of vegetation." \
+"This trail brings you through 3 active volanoes (Tongariro, Ngauruhoe and Ruapehu) and the views of the unique landforms (Red Crater, Emerald Lakes, Blue Lake) along the way will definitely leave you mesmerized." \
+"\n\nA decent level of fitness is required to attempt this track, but the ultimate determinant is the weather. The weather at Tongariro can be extremely volatile so do check the latest weather forecast before making plans." \
+"This hike alone is a very strong reason for you to plan your next holiday to New Zealand and opt to explore the North Island instead of the usual South Island! ")
+
+tongariro_pics = [
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3692.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3697.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3698.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3703.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3706.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3707.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3712.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3716.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3728.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3729.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3742.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3744.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3748.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3750.JPEG",},
+    {"title": "", "text": "", "img":"images/Tongariro/IMG_3757.JPEG",},
+]
+with st.container():
+    carousel(items=tongariro_pics)
+st.divider()
+
+
+st.markdown("#### [Rob Roy Glacier Track](https://www.alltrails.com/trail/new-zealand/otago/rob-roy-glacier-track) | 9/10 | Mount Aspiring National Park | 11.54km")
+st.markdown("" \
+"PSA: The road to this track singlehandedly took >$1000 off the value of my car thanks to the gravel-based river fords. GET A 4WD IF YOU ARE INTENDING TO HEAD HERE!!!" \
+"\n\nYeah this track was definitely memorable for both the right and wrong reasons, but let's focus on the right reasons here. " \
+"You will be spoilt with unreal views of snow-capped mountains from the moment you enter Mount Aspiring National Park." \
+"The track starts at Raspberry Flat carpark, where you will make your way through a vast valley before entering a forest (yes yet another forest)." \
+"Shortly after, you will find yourself at the Lower Lookout, **DO NOT** stop here, continue walking for another hour to the Upper Lookout (weather permitting), 100% worth it." \
+"This is one of the hikes that brings you up close and personal with a glacier, which is a magical experience." \
+"\n\nOne of the easier hikes on this list, distance and elevation profile of the hike are both moderate. Conviniently located an hour's drive away from Wanaka (which I know you'll visit because of that dumb tree), Rob Roy Glacier Track definitely deserves to be on your hiking list! ")
+#insert rob roy pics 
+rob_pics = [
+    {"title": "", "text": "", "img":"images/Rob Roy/IMG_7261.JPEG",},
+    {"title": "", "text": "", "img":"images/Rob Roy/IMG_7262.JPEG",},
+    {"title": "", "text": "", "img":"images/Rob Roy/IMG_7277.JPEG",},
+    {"title": "", "text": "", "img":"images/Rob Roy/IMG_7287.JPEG",},
+]
+with st.container():
+    carousel(items=rob_pics)
+st.divider()
+
+st.markdown("#### [Mount Sunday Track](https://www.alltrails.com/trail/new-zealand/canterbury/mount-sunday-track--3) | 9/10 | Ashburton Lakes | 2.01km")
+st.markdown("" \
+"Forget about all the 'hidden gems' that those influencers talk about. Mount Sunday **IS THE REAL HIDDEN GEM**." 
+"This one completely fell outside of my radar and was not on my list of to-do hikes until one of my friends suggested that we go check it out. " \
+"And boy I'm glad we did because it is stunning!." \
+"\n\n*Lord Of The Rings* fans will find this track especially familiar, as *Edoras* in the trilogy was filmed on Mount Sunday. There are even guided tours available inclusive of props for that perfect picture!" \
+"\n\nThis track is the easiest of all in this list, at only 2km with less than 100m elevation gained, it is suitable for people of all fitness levels! ")
+
+sunday_pics = [
+    {"title": "", "text": "", "img":"images/Mount Sunday/IMG_9062.JPEG",},
+    {"title": "", "text": "", "img":"images/Mount Sunday/IMG_9064.JPEG",},
+    {"title": "", "text": "", "img":"images/Mount Sunday/IMG_9067.JPEG",},
+    {"title": "", "text": "", "img":"images/Mount Sunday/IMG_9068.JPEG",},
+    {"title": "", "text": "", "img":"images/Mount Sunday/IMG_9071.JPEG",},
+    {"title": "", "text": "", "img":"images/Mount Sunday/IMG_9081.JPEG",},
+    {"title": "", "text": "", "img":"images/Mount Sunday/IMG_9085.JPEG",},
+]
+with st.container():
+    carousel(items=sunday_pics)
