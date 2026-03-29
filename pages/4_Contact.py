@@ -7,7 +7,7 @@ st.markdown("""
             
 **Email**: xaviertheng@gmail.com
             
-**Instagram**: x.twj
+**Instagram**: [x.twj](https://www.instagram.com/x.twj/)
             
 **Linkedin**: https://www.linkedin.com/in/xaviertheng/
             """)

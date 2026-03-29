@@ -19,6 +19,7 @@ st.components.v1.html("""
 """)
 
 st.set_page_config(layout="wide")
+st.set_page_config(page_title="Home")
 
 activities = pd.read_csv("data/garmin_activities.csv")
 steps = pd.read_csv("data/garmin_steps.csv")
